@@ -14,7 +14,7 @@ import os from 'os';
  *   input {
  *     type {string} "wav" or "raw"
  *     channels {integer} 1 = mono, 2 = stereo, ...
- *     bits {integer}  resolution per sample. 8, 16, 24, or 32
+ *     bits {integer}  resolution per sample. 8, 16 (normal), 24 (hifi), or 32
  *     rate {integer} sample rate, e.g. 8000 (phone), 16000 (speech), 44100 (CD), 48000 (music quality), 96000 (hifi)
  *     encoding {string enum} "signed-integer", "unsigned-integer", or "float"
  *   }
@@ -23,7 +23,7 @@ import os from 'os';
  *   }
  * } The options in global, input and output match sox commandline, @see man sox
  */
-export function sox(soxOptions = {}) {
+export function soxIO(soxOptions = {}) {
   if (soxOptions.record && soxOptions.play) {
     throw new Error("Choose one of play or record or transform");
   }
@@ -77,10 +77,7 @@ export async function soxPlay(soxOptions, audioStream) {
  * Records audio from the microphone or aux in.
  * @param soxOptions @see sox()
  * @returns {ReadableStream}
- *   Contains data in the format defined by `soxOptions.input`
- *   or `soxOptions.output`
- *   (use `soxOptions.input` where allowed by the hardware device,
- *   otherwise `soxOptions.output`, which will convert it in software.)
+ *   Contains audio data, in the format defined by `soxOptions.input` and `soxOptions.output`
  */
 export function soxRecord(soxOptions) {
   soxOptions.record = true;
