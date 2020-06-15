@@ -1,0 +1,9 @@
+{
+  "name": "sox-io",
+  "version": "0.1",
+  "description": "Play audio on speaker via sound card, record from microphone/aux in, or transform audio format",
+  "main": "sox-io.js",
+  "repository": "https://github.com/benbucksch/sox-io",
+  "author": "Ben Bucksch",
+  "license": "MIT"
+}
