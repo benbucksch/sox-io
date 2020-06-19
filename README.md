@@ -1,4 +1,3 @@
-# sox-io
 Play audio on speaker via sound card, record from microphone/aux in, or transform audio format
 
 # soxPlay

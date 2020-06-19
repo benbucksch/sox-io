@@ -64,22 +64,25 @@ export function soxIO(soxOptions = {}) {
 
 /**
  * Plays audio to the speakers.
- * @param soxOptions @see sox()
+ * @param soxOptions @see soxIO()
  * @returns {WritableStream}
  *   Write data in the format defined by `soxOptions.input`
  */
 export function soxPlay(soxOptions, audioStream) {
   soxOptions.play = true;
-  return sox(soxOptions).inputWritableStream;
+  return soxIO(soxOptions).inputWritableStream;
 }
 
 /**
  * Records audio from the microphone or aux in.
- * @param soxOptions @see sox()
+ * @param soxOptions @see soxIO()
  * @returns {ReadableStream}
- *   Contains audio data, in the format defined by `soxOptions.input` and `soxOptions.output`
+ *   Contains data in the format defined by `soxOptions.input`
+ *   or `soxOptions.output`
+ *   (use `soxOptions.input` where allowed by the hardware device,
+ *   otherwise `soxOptions.output`, which will convert it in software.)
  */
 export function soxRecord(soxOptions) {
   soxOptions.record = true;
-  return sox(soxOptions).outputReadableStream;
+  return soxIO(soxOptions).outputReadableStream;
 }
