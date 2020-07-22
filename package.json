@@ -2,8 +2,19 @@
   "name": "sox-io",
   "version": "0.1.1",
   "description": "Play audio on speaker via sound card, record from microphone/aux in, or transform audio format",
-  "main": "sox-io.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/benbucksch/sox-io",
   "author": "Ben Bucksch",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "dependencies": {
+    "hash-to-array": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
 }
