@@ -1,0 +1,4 @@
+*~
+*.sh
+*.diff
+node_modules/
